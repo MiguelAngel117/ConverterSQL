@@ -5,4 +5,4 @@ bison -d syntactic.y
 flex lexical.l
 gcc syntactic.tab.c lex.yy.c -lfl -o Vick.exe
 
-./Vick.exe  Prueba.x
+./Vick.exe  Texto.txt
