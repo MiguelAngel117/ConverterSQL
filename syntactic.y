@@ -7,13 +7,23 @@ int yylex();
 extern FILE *yyin, *yyout;
 %}
 
-%token SELECT ALL THE EMPLOYEES
+%token NEWLINE SELECT ALL THE EMPLOYEES INSERT INTO UPDATE DELETE WHERE SET VALUE EQUAL FROM
 
 %%
 
+input:  line
+        | input line
+
+line:   query
+        | query NEWLINE
+        | error NEWLINE { yyerror("Error en la entrada"); yyclearin; }
+
 query:
     SELECT ALL THE EMPLOYEES { fprintf(yyout, "SELECT * FROM empleados;\n"); }
-    ;
+  | INSERT INTO EMPLOYEES VALUE { fprintf(yyout, "INSERT INTO empleados VALUES ();\n"); }
+  | UPDATE EMPLOYEES SET { fprintf(yyout, "UPDATE empleados SET nombre = 'Juan';\n"); }
+  | DELETE FROM EMPLOYEES WHERE { fprintf(yyout, "DELETE FROM empleados WHERE id = 5;\n"); }
+  ;
 
 %%
 
@@ -42,7 +52,7 @@ int main(int argc, char **argv) {
     }
 
     yyin = entrada;
-    yyout = salida; 
+    yyout = salida;
 
     yyparse();  // Inicia el análisis sintáctico
 

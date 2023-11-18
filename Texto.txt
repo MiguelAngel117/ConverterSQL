@@ -1,1 +1,4 @@
 Selecciona todos los empleados
+Insertar en empleados valor
+Actualizar empleados establecer
+Eliminar de empleados donde

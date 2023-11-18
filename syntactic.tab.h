@@ -54,10 +54,20 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    SELECT = 258,                  /* SELECT  */
-    ALL = 259,                     /* ALL  */
-    THE = 260,                     /* THE  */
-    EMPLOYEES = 261                /* EMPLOYEES  */
+    NEWLINE = 258,                 /* NEWLINE  */
+    SELECT = 259,                  /* SELECT  */
+    ALL = 260,                     /* ALL  */
+    THE = 261,                     /* THE  */
+    EMPLOYEES = 262,               /* EMPLOYEES  */
+    INSERT = 263,                  /* INSERT  */
+    INTO = 264,                    /* INTO  */
+    UPDATE = 265,                  /* UPDATE  */
+    DELETE = 266,                  /* DELETE  */
+    WHERE = 267,                   /* WHERE  */
+    SET = 268,                     /* SET  */
+    VALUE = 269,                   /* VALUE  */
+    EQUAL = 270,                   /* EQUAL  */
+    FROM = 271                     /* FROM  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
