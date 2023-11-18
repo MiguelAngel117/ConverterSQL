@@ -1,8 +1,8 @@
 //sh ./Run.x
-rm syntactic.tab.* lex.yy.c Vick.exe
+rm syntactic.tab.* lex.yy.c SQL.exe
 
 bison -d syntactic.y
 flex lexical.l
-gcc syntactic.tab.c lex.yy.c -lfl -o Vick.exe
+gcc syntactic.tab.c lex.yy.c -lfl -o SQL.exe
 
-./Vick.exe  Texto.txt
+./SQL.exe  Texto.txt Query.sql
