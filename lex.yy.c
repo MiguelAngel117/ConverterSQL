@@ -322,9 +322,6 @@ void yyfree ( void *  );
 #define YY_AT_BOL() (YY_CURRENT_BUFFER_LVALUE->yy_at_bol)
 
 /* Begin user sect3 */
-
-#define yywrap() (/*CONSTCOND*/1)
-#define YY_SKIP_YYWRAP
 typedef flex_uint8_t YY_CHAR;
 
 FILE *yyin = NULL, *yyout = NULL;
@@ -354,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 7
-#define YY_END_OF_BUFFER 8
+#define YY_NUM_RULES 8
+#define YY_END_OF_BUFFER 9
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -365,10 +362,10 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[37] =
     {   0,
-        0,    0,    8,    6,    1,    1,    6,    6,    6,    6,
-        1,    0,    0,    0,    0,    0,    0,    4,    0,    0,
-        0,    0,    0,    0,    3,    0,    0,    0,    0,    0,
-        0,    0,    5,    0,    2,    0
+        0,    0,    9,    7,    1,    1,    7,    7,    7,    7,
+        1,    0,    0,    0,    0,    0,    0,    5,    0,    0,
+        0,    0,    0,    0,    4,    0,    0,    0,    0,    0,
+        0,    0,    6,    3,    2,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -466,8 +463,8 @@ char *yytext;
 #line 3 "lexical.l"
 #include "syntactic.tab.h"
 void yyerror(char *);
-#line 470 "lex.yy.c"
-#line 471 "lex.yy.c"
+#line 467 "lex.yy.c"
+#line 468 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -684,10 +681,10 @@ YY_DECL
 		}
 
 	{
-#line 9 "lexical.l"
+#line 7 "lexical.l"
 
 
-#line 691 "lex.yy.c"
+#line 688 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -747,40 +744,45 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 11 "lexical.l"
+#line 9 "lexical.l"
 { /* Ignorar espacios en blanco */ }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 13 "lexical.l"
+#line 10 "lexical.l"
 { return SELECT; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 14 "lexical.l"
-{ return ALL; }
+#line 11 "lexical.l"
+{ return SELECT; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 15 "lexical.l"
-{ return THE; }
+#line 12 "lexical.l"
+{ return ALL; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 16 "lexical.l"
-{ return EMPLOYEES; }
+#line 13 "lexical.l"
+{ return THE; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 18 "lexical.l"
-{ /* Caracteres no reconocidos */ }
+#line 14 "lexical.l"
+{ return EMPLOYEES; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 20 "lexical.l"
+#line 15 "lexical.l"
+{ /* Caracteres no reconocidos */ }
+	YY_BREAK
+case 8:
+YY_RULE_SETUP
+#line 17 "lexical.l"
 ECHO;
 	YY_BREAK
-#line 784 "lex.yy.c"
+#line 786 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1785,5 +1787,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 20 "lexical.l"
+#line 17 "lexical.l"
 
+int yywrap(){return 1;}

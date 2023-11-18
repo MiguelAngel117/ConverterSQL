@@ -4,7 +4,7 @@
 void yyerror(char *);
 int yylex();
 
-extern FILE *yyin, *yyout;  // Declara yyin y yyout como externos
+extern FILE *yyin, *yyout;
 %}
 
 %token SELECT ALL THE EMPLOYEES
@@ -41,8 +41,8 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    yyin = entrada;  // Asigna el archivo de entrada a yyin
-    yyout = salida;  // Asigna el archivo de salida a yyout
+    yyin = entrada;
+    yyout = salida; 
 
     yyparse();  // Inicia el análisis sintáctico
 
