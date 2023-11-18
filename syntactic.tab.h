@@ -54,11 +54,11 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    NEWLINE = 258,                 /* NEWLINE  */
-    SELECT = 259,                  /* SELECT  */
-    ALL = 260,                     /* ALL  */
-    THE = 261,                     /* THE  */
-    EMPLOYEES = 262,               /* EMPLOYEES  */
+    FIELD = 258,                   /* FIELD  */
+    NEWLINE = 259,                 /* NEWLINE  */
+    SELECT = 260,                  /* SELECT  */
+    ALL = 261,                     /* ALL  */
+    THE = 262,                     /* THE  */
     INSERT = 263,                  /* INSERT  */
     INTO = 264,                    /* INTO  */
     UPDATE = 265,                  /* UPDATE  */
@@ -74,7 +74,16 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+union YYSTYPE
+{
+#line 11 "syntactic.y"
+
+    char* str;
+
+#line 84 "syntactic.tab.h"
+
+};
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif

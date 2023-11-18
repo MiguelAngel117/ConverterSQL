@@ -1,14 +1,21 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 void yyerror(char *);
 int yylex();
 
 extern FILE *yyin, *yyout;
 %}
 
-%token NEWLINE SELECT ALL THE EMPLOYEES INSERT INTO UPDATE DELETE WHERE SET VALUE EQUAL FROM
+%union {
+    char* str;
+}
+%token <str> FIELD
+%token NEWLINE SELECT ALL THE INSERT INTO UPDATE DELETE WHERE SET VALUE EQUAL FROM
 
+
+/** Sección de reglas**/
 %%
 
 input:  line
@@ -23,13 +30,13 @@ query: select
        | update
        | delete
 
-select: SELECT ALL THE EMPLOYEES { fprintf(yyout, "SELECT * FROM empleados;\n"); }
+select: SELECT ALL THE FIELD { fprintf(yyout, "SELECT * FROM %s;\n", $4); }
 
-insert: INSERT INTO EMPLOYEES VALUE { fprintf(yyout, "INSERT INTO empleados VALUES ();\n"); }
+insert: INSERT INTO FIELD VALUE { fprintf(yyout, "INSERT INTO %s VALUES ();\n", $3);}
 
-delete: DELETE FROM EMPLOYEES WHERE { fprintf(yyout, "DELETE FROM empleados WHERE id = 5;\n"); }
+delete: DELETE FROM FIELD WHERE { fprintf(yyout, "DELETE FROM %s WHERE id = 5;\n", $3); }
 
-update: UPDATE EMPLOYEES SET { fprintf(yyout, "UPDATE empleados SET nombre = 'Juan';\n"); }
+update: UPDATE FIELD SET { fprintf(yyout, "UPDATE %s SET nombre = 'Juan';\n", $2); }
 
 condition: SELECT
 

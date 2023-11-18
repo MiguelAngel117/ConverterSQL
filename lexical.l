@@ -3,17 +3,15 @@
 #include "syntactic.tab.h"
 void yyerror(char *);
 %}
-
+field [a-zA-Z]+
 %%
 
-[ \t]+               { /* Ignorar espacios en blanco */ }
 \n                   { return NEWLINE; }
 "Seleccionar"        { return SELECT; }
 "Selecciona"         { return SELECT; }
 "todos"              { return ALL; }
 "los"                { return THE; }
 "de"                 { return FROM; }
-"empleados"          { return EMPLOYEES; }
 "Insertar"           { return INSERT; }
 "en"                 { return INTO; }
 "Actualizar"         { return UPDATE; }
@@ -22,6 +20,8 @@ void yyerror(char *);
 "establecer"         { return SET; }
 "valor"              { return VALUE; }
 "igual"              { return EQUAL; }
+{field}              {yylval.str = strdup(yytext); return FIELD;}
+[ \t]+               { /* Ignorar espacios en blanco */ }
 .                    { /* Caracteres no reconocidos */ }
 
 %%
