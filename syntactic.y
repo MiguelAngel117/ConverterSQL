@@ -18,12 +18,20 @@ line:   query
         | query NEWLINE
         | error NEWLINE { yyerror("Error en la entrada"); yyclearin; }
 
-query:
-    SELECT ALL THE EMPLOYEES { fprintf(yyout, "SELECT * FROM empleados;\n"); }
-  | INSERT INTO EMPLOYEES VALUE { fprintf(yyout, "INSERT INTO empleados VALUES ();\n"); }
-  | UPDATE EMPLOYEES SET { fprintf(yyout, "UPDATE empleados SET nombre = 'Juan';\n"); }
-  | DELETE FROM EMPLOYEES WHERE { fprintf(yyout, "DELETE FROM empleados WHERE id = 5;\n"); }
-  ;
+query: select
+       | insert
+       | update
+       | delete
+
+select: SELECT ALL THE EMPLOYEES { fprintf(yyout, "SELECT * FROM empleados;\n"); }
+
+insert: INSERT INTO EMPLOYEES VALUE { fprintf(yyout, "INSERT INTO empleados VALUES ();\n"); }
+
+delete: DELETE FROM EMPLOYEES WHERE { fprintf(yyout, "DELETE FROM empleados WHERE id = 5;\n"); }
+
+update: UPDATE EMPLOYEES SET { fprintf(yyout, "UPDATE empleados SET nombre = 'Juan';\n"); }
+
+condition: SELECT
 
 %%
 
