@@ -7,8 +7,8 @@ app = Flask(__name__)
 def conectar_a_mysql():
     try:
         conexion = mysql.connector.connect(
-            host="0.tcp.ngrok.io",  # Reemplaza con tu host de ngrok
-            port="12388",          # Reemplaza con tu puerto de ngrok
+            host="2.tcp.ngrok.io",  # Reemplaza con tu host de ngrok
+            port="12332",          # Reemplaza con tu puerto de ngrok
             user="root",          # Tu usuario
             password="admin",      # Tu contraseña
             database="formales"    # Nombre de tu base de datos
