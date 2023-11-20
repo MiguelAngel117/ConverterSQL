@@ -10,9 +10,13 @@ extern FILE *yyin, *yyout;
 
 %union {
     char* str;
+    int num;
+    float flo;
 }
-%token <str> FIELD
-%token NEWLINE SELECT ALL THE INSERT INTO UPDATE DELETE WHERE SET VALUE EQUAL FROM
+%token <str> FIELD TABLE
+%token <flo> FLOAT
+%token <num> NUMBER
+%token NEWLINE SELECT ALL INSERT INTO UPDATE DELETE WHERE SET VALUE EQUAL FROM THE
 
 
 /** Sección de reglas**/
@@ -30,15 +34,16 @@ query: select
        | update
        | delete
 
-select: SELECT ALL THE FIELD { fprintf(yyout, "SELECT * FROM %s;\n", $4); }
+select: SELECT ALL FROM FIELD { fprintf(yyout, "SELECT * FROM %s;\n", $4); }
+      | SELECT ALL FROM FIELD WHERE THE FIELD { fprintf(yyout, "SELECT * FROM %s WHERE %s = 1;\n", $4, $7); }
 
-insert: INSERT INTO FIELD VALUE { fprintf(yyout, "INSERT INTO %s VALUES ();\n", $3);}
+insert: INSERT INTO FIELD VALUE FIELD{ fprintf(yyout, "INSERT INTO %s VALUES ('%s');\n", $3, $5);}
 
 delete: DELETE FROM FIELD WHERE { fprintf(yyout, "DELETE FROM %s WHERE id = 5;\n", $3); }
 
 update: UPDATE FIELD SET { fprintf(yyout, "UPDATE %s SET nombre = 'Juan';\n", $2); }
 
-condition: SELECT
+condition: SELECT 
 
 %%
 

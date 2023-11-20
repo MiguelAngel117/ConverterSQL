@@ -55,19 +55,22 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     FIELD = 258,                   /* FIELD  */
-    NEWLINE = 259,                 /* NEWLINE  */
-    SELECT = 260,                  /* SELECT  */
-    ALL = 261,                     /* ALL  */
-    THE = 262,                     /* THE  */
-    INSERT = 263,                  /* INSERT  */
-    INTO = 264,                    /* INTO  */
-    UPDATE = 265,                  /* UPDATE  */
-    DELETE = 266,                  /* DELETE  */
-    WHERE = 267,                   /* WHERE  */
-    SET = 268,                     /* SET  */
-    VALUE = 269,                   /* VALUE  */
-    EQUAL = 270,                   /* EQUAL  */
-    FROM = 271                     /* FROM  */
+    TABLE = 259,                   /* TABLE  */
+    FLOAT = 260,                   /* FLOAT  */
+    NUMBER = 261,                  /* NUMBER  */
+    NEWLINE = 262,                 /* NEWLINE  */
+    SELECT = 263,                  /* SELECT  */
+    ALL = 264,                     /* ALL  */
+    INSERT = 265,                  /* INSERT  */
+    INTO = 266,                    /* INTO  */
+    UPDATE = 267,                  /* UPDATE  */
+    DELETE = 268,                  /* DELETE  */
+    WHERE = 269,                   /* WHERE  */
+    SET = 270,                     /* SET  */
+    VALUE = 271,                   /* VALUE  */
+    EQUAL = 272,                   /* EQUAL  */
+    FROM = 273,                    /* FROM  */
+    THE = 274                      /* THE  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -79,8 +82,10 @@ union YYSTYPE
 #line 11 "syntactic.y"
 
     char* str;
+    int num;
+    float flo;
 
-#line 84 "syntactic.tab.h"
+#line 89 "syntactic.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

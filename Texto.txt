@@ -1,4 +1,5 @@
 Selecciona todos los empleados
-Insertar en empleados valor
+Seleccionar todos los empleados donde el nombreEmpleados
+Insertar en empleados valor josE
 Actualizar empleados establecer
 Eliminar de empleados donde
