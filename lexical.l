@@ -4,7 +4,7 @@
 void yyerror(char *);
 %}
 field [a-zA-Z]+
-table ^\w+(_\w+)?$
+table [a-z]+(_[a-z]+)?
 number -?[0-9]+
 float -?[0-9]+\.[0-9]*
 %%

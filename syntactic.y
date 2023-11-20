@@ -34,7 +34,7 @@ query: select
        | update
        | delete
 
-select: SELECT ALL FROM FIELD { fprintf(yyout, "SELECT * FROM %s;\n", $4); }
+select: SELECT ALL FROM TABLE { fprintf(yyout, "SELECT * FROM %s;\n", $4); }
       | SELECT ALL FROM FIELD WHERE THE FIELD { fprintf(yyout, "SELECT * FROM %s WHERE %s = 1;\n", $4, $7); }
 
 insert: INSERT INTO FIELD VALUE FIELD{ fprintf(yyout, "INSERT INTO %s VALUES ('%s');\n", $3, $5);}
