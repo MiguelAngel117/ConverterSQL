@@ -56,21 +56,25 @@ extern int yydebug;
     YYUNDEF = 257,                 /* "invalid token"  */
     FIELD = 258,                   /* FIELD  */
     TABLE = 259,                   /* TABLE  */
-    FLOAT = 260,                   /* FLOAT  */
-    NUMBER = 261,                  /* NUMBER  */
-    NEWLINE = 262,                 /* NEWLINE  */
-    SELECT = 263,                  /* SELECT  */
-    ALL = 264,                     /* ALL  */
-    INSERT = 265,                  /* INSERT  */
-    INTO = 266,                    /* INTO  */
-    UPDATE = 267,                  /* UPDATE  */
-    DELETE = 268,                  /* DELETE  */
-    WHERE = 269,                   /* WHERE  */
-    SET = 270,                     /* SET  */
-    VALUE = 271,                   /* VALUE  */
-    EQUAL = 272,                   /* EQUAL  */
-    FROM = 273,                    /* FROM  */
-    THE = 274                      /* THE  */
+    STRING = 260,                  /* STRING  */
+    FLOAT = 261,                   /* FLOAT  */
+    NUMBER = 262,                  /* NUMBER  */
+    NEWLINE = 263,                 /* NEWLINE  */
+    SELECT = 264,                  /* SELECT  */
+    ALL = 265,                     /* ALL  */
+    INSERT = 266,                  /* INSERT  */
+    INTO = 267,                    /* INTO  */
+    UPDATE = 268,                  /* UPDATE  */
+    DELETE = 269,                  /* DELETE  */
+    WHERE = 270,                   /* WHERE  */
+    SET = 271,                     /* SET  */
+    VALUE = 272,                   /* VALUE  */
+    EQUAL = 273,                   /* EQUAL  */
+    FROM = 274,                    /* FROM  */
+    THE = 275,                     /* THE  */
+    JOIN = 276,                    /* JOIN  */
+    ORDER_BY = 277,                /* ORDER_BY  */
+    GROUP_BY = 278                 /* GROUP_BY  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -85,7 +89,7 @@ union YYSTYPE
     int num;
     float flo;
 
-#line 89 "syntactic.tab.h"
+#line 93 "syntactic.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

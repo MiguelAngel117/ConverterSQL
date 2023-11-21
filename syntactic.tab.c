@@ -110,29 +110,36 @@ enum yysymbol_kind_t
   YYSYMBOL_YYUNDEF = 2,                    /* "invalid token"  */
   YYSYMBOL_FIELD = 3,                      /* FIELD  */
   YYSYMBOL_TABLE = 4,                      /* TABLE  */
-  YYSYMBOL_FLOAT = 5,                      /* FLOAT  */
-  YYSYMBOL_NUMBER = 6,                     /* NUMBER  */
-  YYSYMBOL_NEWLINE = 7,                    /* NEWLINE  */
-  YYSYMBOL_SELECT = 8,                     /* SELECT  */
-  YYSYMBOL_ALL = 9,                        /* ALL  */
-  YYSYMBOL_INSERT = 10,                    /* INSERT  */
-  YYSYMBOL_INTO = 11,                      /* INTO  */
-  YYSYMBOL_UPDATE = 12,                    /* UPDATE  */
-  YYSYMBOL_DELETE = 13,                    /* DELETE  */
-  YYSYMBOL_WHERE = 14,                     /* WHERE  */
-  YYSYMBOL_SET = 15,                       /* SET  */
-  YYSYMBOL_VALUE = 16,                     /* VALUE  */
-  YYSYMBOL_EQUAL = 17,                     /* EQUAL  */
-  YYSYMBOL_FROM = 18,                      /* FROM  */
-  YYSYMBOL_THE = 19,                       /* THE  */
-  YYSYMBOL_YYACCEPT = 20,                  /* $accept  */
-  YYSYMBOL_input = 21,                     /* input  */
-  YYSYMBOL_line = 22,                      /* line  */
-  YYSYMBOL_query = 23,                     /* query  */
-  YYSYMBOL_select = 24,                    /* select  */
-  YYSYMBOL_insert = 25,                    /* insert  */
-  YYSYMBOL_delete = 26,                    /* delete  */
-  YYSYMBOL_update = 27                     /* update  */
+  YYSYMBOL_STRING = 5,                     /* STRING  */
+  YYSYMBOL_FLOAT = 6,                      /* FLOAT  */
+  YYSYMBOL_NUMBER = 7,                     /* NUMBER  */
+  YYSYMBOL_NEWLINE = 8,                    /* NEWLINE  */
+  YYSYMBOL_SELECT = 9,                     /* SELECT  */
+  YYSYMBOL_ALL = 10,                       /* ALL  */
+  YYSYMBOL_INSERT = 11,                    /* INSERT  */
+  YYSYMBOL_INTO = 12,                      /* INTO  */
+  YYSYMBOL_UPDATE = 13,                    /* UPDATE  */
+  YYSYMBOL_DELETE = 14,                    /* DELETE  */
+  YYSYMBOL_WHERE = 15,                     /* WHERE  */
+  YYSYMBOL_SET = 16,                       /* SET  */
+  YYSYMBOL_VALUE = 17,                     /* VALUE  */
+  YYSYMBOL_EQUAL = 18,                     /* EQUAL  */
+  YYSYMBOL_FROM = 19,                      /* FROM  */
+  YYSYMBOL_THE = 20,                       /* THE  */
+  YYSYMBOL_JOIN = 21,                      /* JOIN  */
+  YYSYMBOL_ORDER_BY = 22,                  /* ORDER_BY  */
+  YYSYMBOL_GROUP_BY = 23,                  /* GROUP_BY  */
+  YYSYMBOL_YYACCEPT = 24,                  /* $accept  */
+  YYSYMBOL_input = 25,                     /* input  */
+  YYSYMBOL_line = 26,                      /* line  */
+  YYSYMBOL_query = 27,                     /* query  */
+  YYSYMBOL_select = 28,                    /* select  */
+  YYSYMBOL_insert = 29,                    /* insert  */
+  YYSYMBOL_delete = 30,                    /* delete  */
+  YYSYMBOL_update = 31,                    /* update  */
+  YYSYMBOL_join = 32,                      /* join  */
+  YYSYMBOL_order_by = 33,                  /* order_by  */
+  YYSYMBOL_group_by = 34                   /* group_by  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -458,21 +465,21 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  18
+#define YYFINAL  25
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   30
+#define YYLAST   49
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  20
+#define YYNTOKENS  24
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  8
+#define YYNNTS  11
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  15
+#define YYNRULES  23
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  33
+#define YYNSTATES  48
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   274
+#define YYMAXUTOK   278
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -513,7 +520,7 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18,    19
+      15,    16,    17,    18,    19,    20,    21,    22,    23
 };
 
 #if YYDEBUG
@@ -521,7 +528,8 @@ static const yytype_int8 yytranslate[] =
 static const yytype_int8 yyrline[] =
 {
        0,    25,    25,    26,    28,    29,    30,    32,    33,    34,
-      35,    37,    38,    40,    42,    44
+      35,    36,    37,    38,    40,    41,    42,    43,    45,    47,
+      49,    51,    53,    55
 };
 #endif
 
@@ -538,10 +546,11 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "FIELD", "TABLE",
-  "FLOAT", "NUMBER", "NEWLINE", "SELECT", "ALL", "INSERT", "INTO",
-  "UPDATE", "DELETE", "WHERE", "SET", "VALUE", "EQUAL", "FROM", "THE",
-  "$accept", "input", "line", "query", "select", "insert", "delete",
-  "update", YY_NULLPTR
+  "STRING", "FLOAT", "NUMBER", "NEWLINE", "SELECT", "ALL", "INSERT",
+  "INTO", "UPDATE", "DELETE", "WHERE", "SET", "VALUE", "EQUAL", "FROM",
+  "THE", "JOIN", "ORDER_BY", "GROUP_BY", "$accept", "input", "line",
+  "query", "select", "insert", "delete", "update", "join", "order_by",
+  "group_by", YY_NULLPTR
 };
 
 static const char *
@@ -556,7 +565,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
 
-#define YYTABLE_NINF (-1)
+#define YYTABLE_NINF (-14)
 
 #define yytable_value_is_error(Yyn) \
   0
@@ -565,10 +574,11 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-       6,    -3,    -4,    -5,     8,    -9,     0,   -10,    10,   -10,
-     -10,   -10,   -10,   -10,     2,    12,     7,    18,   -10,   -10,
-     -10,    -1,     9,   -10,    13,    14,   -10,    20,   -10,     5,
-     -10,    23,   -10
+       0,    -4,     2,    -6,     4,    -9,    13,    16,    15,   -10,
+      10,   -10,   -10,   -10,   -10,   -10,   -10,   -10,     1,     6,
+      24,    14,    28,   -10,   -10,   -10,   -10,   -10,    29,    -1,
+      17,   -10,    20,    23,    25,    11,    36,   -10,   -10,    21,
+      22,   -10,    39,    26,   -10,    40,   -10,   -10
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -576,22 +586,25 @@ static const yytype_int8 yypact[] =
    means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,     0,     0,     0,     0,     0,     0,     2,     4,     7,
-       8,    10,     9,     6,     0,     0,     0,     0,     1,     3,
-       5,     0,     0,    15,     0,     0,    11,     0,    14,     0,
-      13,     0,    12
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     2,
+       4,     7,     8,    10,     9,    11,    12,     6,     0,     0,
+       0,     0,     0,    21,    22,     1,     3,     5,     0,     0,
+       0,    20,     0,     0,     0,    14,     0,    19,    17,     0,
+       0,    18,     0,     0,    15,     0,    16,    23
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -10,   -10,    24,   -10,   -10,   -10,   -10,   -10
+     -10,   -10,    37,   -10,   -10,   -10,   -10,   -10,    12,     8,
+     -10
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-       0,     6,     7,     8,     9,    10,    11,    12
+       0,     8,     9,    10,    11,    12,    13,    14,    15,    16,
+      46
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -599,42 +612,47 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      18,     1,    25,    26,    13,    14,    15,     1,     2,    17,
-       3,    16,     4,     5,     2,    22,     3,    20,     4,     5,
-      21,    24,    23,    30,    31,    27,    32,    28,    29,     0,
-      19
+     -13,     1,    34,    35,    17,    18,    20,    21,   -13,     2,
+      22,     3,    19,     4,     5,    25,     1,    23,    27,    24,
+      28,     6,     7,   -13,     2,    29,     3,    30,     4,     5,
+      31,    32,     6,    33,    36,    37,     6,     7,    38,    41,
+      39,    42,    44,    47,     7,    26,     0,    40,    43,    45
 };
 
 static const yytype_int8 yycheck[] =
 {
-       0,     1,     3,     4,     7,     9,    11,     1,     8,    18,
-      10,     3,    12,    13,     8,     3,    10,     7,    12,    13,
-      18,     3,    15,     3,    19,    16,     3,    14,    14,    -1,
-       6
+       0,     1,     3,     4,     8,     3,    12,     3,     8,     9,
+      19,    11,    10,    13,    14,     0,     1,     4,     8,     3,
+      19,    21,    22,     8,     9,    19,    11,     3,    13,    14,
+      16,     3,    21,     4,    17,    15,    21,    22,    15,     3,
+      15,    20,     3,     3,    22,     8,    -1,    35,    40,    23
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     1,     8,    10,    12,    13,    21,    22,    23,    24,
-      25,    26,    27,     7,     9,    11,     3,    18,     0,    22,
-       7,    18,     3,    15,     3,     3,     4,    16,    14,    14,
-       3,    19,     3
+       0,     1,     9,    11,    13,    14,    21,    22,    25,    26,
+      27,    28,    29,    30,    31,    32,    33,     8,     3,    10,
+      12,     3,    19,     4,     3,     0,    26,     8,    19,    19,
+       3,    16,     3,     4,     3,     4,    17,    15,    15,    15,
+      32,     3,    20,    33,     3,    23,    34,     3
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    20,    21,    21,    22,    22,    22,    23,    23,    23,
-      23,    24,    24,    25,    26,    27
+       0,    24,    25,    25,    26,    26,    26,    27,    27,    27,
+      27,    27,    27,    27,    28,    28,    28,    28,    29,    30,
+      31,    32,    33,    34
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
        0,     2,     1,     2,     1,     2,     2,     1,     1,     1,
-       1,     4,     7,     5,     4,     3
+       1,     1,     1,     0,     4,     7,     7,     5,     5,     4,
+       3,     2,     2,     2
 };
 
 
@@ -1100,41 +1118,59 @@ yyreduce:
   case 6: /* line: error NEWLINE  */
 #line 30 "syntactic.y"
                         { yyerror("Error en la entrada"); yyclearin; }
-#line 1104 "syntactic.tab.c"
-    break;
-
-  case 11: /* select: SELECT ALL FROM TABLE  */
-#line 37 "syntactic.y"
-                              { fprintf(yyout, "SELECT * FROM %s;\n", (yyvsp[0].str)); }
-#line 1110 "syntactic.tab.c"
-    break;
-
-  case 12: /* select: SELECT ALL FROM FIELD WHERE THE FIELD  */
-#line 38 "syntactic.y"
-                                              { fprintf(yyout, "SELECT * FROM %s WHERE %s = 1;\n", (yyvsp[-3].str), (yyvsp[0].str)); }
-#line 1116 "syntactic.tab.c"
-    break;
-
-  case 13: /* insert: INSERT INTO FIELD VALUE FIELD  */
-#line 40 "syntactic.y"
-                                     { fprintf(yyout, "INSERT INTO %s VALUES ('%s');\n", (yyvsp[-2].str), (yyvsp[0].str));}
 #line 1122 "syntactic.tab.c"
     break;
 
-  case 14: /* delete: DELETE FROM FIELD WHERE  */
-#line 42 "syntactic.y"
-                                { fprintf(yyout, "DELETE FROM %s WHERE id = 5;\n", (yyvsp[-1].str)); }
+  case 14: /* select: SELECT ALL FROM TABLE  */
+#line 40 "syntactic.y"
+                              { fprintf(yyout, "SELECT * FROM %s;\n", (yyvsp[0].str)); }
 #line 1128 "syntactic.tab.c"
     break;
 
-  case 15: /* update: UPDATE FIELD SET  */
-#line 44 "syntactic.y"
-                         { fprintf(yyout, "UPDATE %s SET nombre = 'Juan';\n", (yyvsp[-1].str)); }
+  case 15: /* select: SELECT ALL FROM FIELD WHERE THE FIELD  */
+#line 41 "syntactic.y"
+                                              { fprintf(yyout, "SELECT * FROM %s WHERE %s = 1;\n", (yyvsp[-3].str), (yyvsp[0].str)); }
 #line 1134 "syntactic.tab.c"
     break;
 
+  case 18: /* insert: INSERT INTO FIELD VALUE FIELD  */
+#line 45 "syntactic.y"
+                                     { fprintf(yyout, "INSERT INTO %s VALUES ('%s');\n", (yyvsp[-2].str), (yyvsp[0].str));}
+#line 1140 "syntactic.tab.c"
+    break;
 
-#line 1138 "syntactic.tab.c"
+  case 19: /* delete: DELETE FROM FIELD WHERE  */
+#line 47 "syntactic.y"
+                                { fprintf(yyout, "DELETE FROM %s WHERE id = 5;\n", (yyvsp[-1].str)); }
+#line 1146 "syntactic.tab.c"
+    break;
+
+  case 20: /* update: UPDATE FIELD SET  */
+#line 49 "syntactic.y"
+                         { fprintf(yyout, "UPDATE %s SET nombre = 'Juan';\n", (yyvsp[-1].str)); }
+#line 1152 "syntactic.tab.c"
+    break;
+
+  case 21: /* join: JOIN TABLE  */
+#line 51 "syntactic.y"
+                 { fprintf(yyout, " JOIN %s", (yyvsp[0].str)); }
+#line 1158 "syntactic.tab.c"
+    break;
+
+  case 22: /* order_by: ORDER_BY FIELD  */
+#line 53 "syntactic.y"
+                         { fprintf(yyout, " ORDER BY %s", (yyvsp[0].str)); }
+#line 1164 "syntactic.tab.c"
+    break;
+
+  case 23: /* group_by: GROUP_BY FIELD  */
+#line 55 "syntactic.y"
+                         { fprintf(yyout, " GROUP BY %s", (yyvsp[0].str)); }
+#line 1170 "syntactic.tab.c"
+    break;
+
+
+#line 1174 "syntactic.tab.c"
 
       default: break;
     }
@@ -1327,7 +1363,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 48 "syntactic.y"
+#line 57 "syntactic.y"
 
 
 void yyerror(char *s) {

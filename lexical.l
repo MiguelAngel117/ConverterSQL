@@ -24,6 +24,10 @@ float -?[0-9]+\.[0-9]*
 "establecer"         { return SET; }
 "valor"              { return VALUE; }
 "igual"              { return EQUAL; }
+"unir"               { return JOIN; }
+"ordenar por"        { return ORDER_BY; }
+"agrupar por"        { return GROUP_BY; }
+\"[^\"]+\"           { yylval.str = strdup(yytext); return STRING; }
 {float}              { yylval.flo = atof(yytext); return FLOAT; }
 {number}             { yylval.num = atoi(yytext); return NUMBER; }
 {field}              { yylval.str = strdup(yytext); return FIELD; }

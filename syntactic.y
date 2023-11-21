@@ -13,10 +13,10 @@ extern FILE *yyin, *yyout;
     int num;
     float flo;
 }
-%token <str> FIELD TABLE
+%token <str> FIELD TABLE STRING
 %token <flo> FLOAT
 %token <num> NUMBER
-%token NEWLINE SELECT ALL INSERT INTO UPDATE DELETE WHERE SET VALUE EQUAL FROM THE
+%token NEWLINE SELECT ALL INSERT INTO UPDATE DELETE WHERE SET VALUE EQUAL FROM THE JOIN ORDER_BY GROUP_BY
 
 
 /** Sección de reglas**/
@@ -33,9 +33,14 @@ query: select
        | insert
        | update
        | delete
+       | join
+       | order_by
+       | 
 
 select: SELECT ALL FROM TABLE { fprintf(yyout, "SELECT * FROM %s;\n", $4); }
       | SELECT ALL FROM FIELD WHERE THE FIELD { fprintf(yyout, "SELECT * FROM %s WHERE %s = 1;\n", $4, $7); }
+      | SELECT ALL FROM TABLE join order_by group_by
+      | SELECT FIELD FROM TABLE WHERE
 
 insert: INSERT INTO FIELD VALUE FIELD{ fprintf(yyout, "INSERT INTO %s VALUES ('%s');\n", $3, $5);}
 
@@ -43,7 +48,11 @@ delete: DELETE FROM FIELD WHERE { fprintf(yyout, "DELETE FROM %s WHERE id = 5;\n
 
 update: UPDATE FIELD SET { fprintf(yyout, "UPDATE %s SET nombre = 'Juan';\n", $2); }
 
-condition: SELECT 
+join: JOIN TABLE { fprintf(yyout, " JOIN %s", $2); }
+
+order_by: ORDER_BY FIELD { fprintf(yyout, " ORDER BY %s", $2); }
+
+group_by: GROUP_BY FIELD { fprintf(yyout, " GROUP BY %s", $2); }
 
 %%
 
