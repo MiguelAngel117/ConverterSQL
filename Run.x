@@ -1,4 +1,3 @@
-//sh ./Run.x
 rm syntactic.tab.* lex.yy.c SQL.exe
 
 bison -d syntactic.y
