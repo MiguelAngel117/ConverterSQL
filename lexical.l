@@ -10,23 +10,28 @@ float -?[0-9]+\.[0-9]*
 %%
 
 \n                   { return NEWLINE; }
-"Seleccionar"        { return SELECT; }
-"Selecciona"         { return SELECT; }
-"todos"              { return ALL; }
-"los"                { return FROM; }
-"de"                 { return FROM; }
-"el"                 { return THE; }
-"Insertar"           { return INSERT; }
-"en"                 { return INTO; }
-"Actualizar"         { return UPDATE; }
-"Eliminar"           { return DELETE; }
-"donde"              { return WHERE; }
-"establecer"         { return SET; }
-"valor"              { return VALUE; }
-"igual"              { return EQUAL; }
-"unir"               { return JOIN; }
-"ordenar por"        { return ORDER_BY; }
-"agrupar por"        { return GROUP_BY; }
+[Ss]eleccionar       { return SELECT; }
+[Aa]                 { return TO; }
+[Ss]elecciona        { return SELECT; }
+[Ss]eleccione        { return SELECT; }
+[Tt]odos             { return ALL; }
+[Ll]os               { return FROM; }
+[Dd]e                { return FROM; }
+[Ee]l                { return THE; }
+[Ii]nsertar          { return INSERT; }
+[Ee]n                { return INTO; }
+[Aa]ctualizar        { return UPDATE; }
+[Ee]liminar          { return DELETE; }
+[Dd]onde             { return WHERE; }
+[Ee]stablecer        { return SET; }
+[Vv]alor             { return VALUE; }
+[Ss]ea[ \t]igual     { return EQUAL; }
+[Ii]gual             { return EQUAL; }
+[Dd]iferente         { return DIFERENT; }
+[Mm]ayor[ \t]+o[ \t]+igual        { return MAYEQUAL; }
+[Uu]nir              { return JOIN; }
+[Aa]grupar[ \t]+por  { return GROUP_BY; }
+[Oo]rdenar[ \t]+por  { return ORDER_BY; }
 \"[^\"]+\"           { yylval.str = strdup(yytext); return STRING; }
 {float}              { yylval.flo = atof(yytext); return FLOAT; }
 {number}             { yylval.num = atoi(yytext); return NUMBER; }
