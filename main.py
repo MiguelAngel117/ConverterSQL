@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask
 import mysql.connector
 from mysql.connector import Error
 
@@ -7,55 +7,45 @@ app = Flask(__name__)
 def conectar_a_mysql():
     try:
         conexion = mysql.connector.connect(
-            host="2.tcp.ngrok.io",  # Reemplaza con tu host de ngrok
-            port="12332",          # Reemplaza con tu puerto de ngrok
-            user="root",          # Tu usuario
-            password="admin",      # Tu contraseña
-            database="formales"    # Nombre de tu base de datos
+            user="admin1", 
+            password="PanyChocolate1", 
+            host="formales123.mysql.database.azure.com", 
+            port=3306, 
+            database="formales",
+            ssl_disabled=False
         )
         return conexion
     except Error as e:
         print("Error al conectar a MySQL", e)
         return None
 
-@app.route('/empleados', methods=['GET'])
-def obtener_empleados():
+def ejecutar_consultas_sql(archivo):
     try:
+        with open(archivo, 'r') as file:
+            consultas = [line.strip() for line in file if line.strip()]
+        
         conexion = conectar_a_mysql()
         if conexion.is_connected():
             cursor = conexion.cursor()
-            cursor.execute("SELECT * FROM empleados")
-            resultados = cursor.fetchall()
-            empleados = [{"nombre": fila[0]} for fila in resultados]
+            for consulta in consultas:
+                palabra_clave = consulta.split()[0].lower()
+                cursor.execute(consulta)
+                if palabra_clave == 'select':
+                    resultados = cursor.fetchall()
+                    for resultado in resultados:
+                        print(resultado)
+                else:
+                    conexion.commit()
+                    print(f"Operación {palabra_clave} ejecutada con éxito.")
             cursor.close()
             conexion.close()
-
-            # Imprimir los empleados por consola
-            for empleado in empleados:
-                print(empleado)
-
-            return jsonify(empleados)
     except Error as e:
-        print("Error al obtener datos de MySQL", e)
-        return jsonify([]), 500
+        print("Error al ejecutar consultas en MySQL", e)
 
-
-@app.route('/empleados', methods=['POST'])
-def agregar_empleado():
-    datos = request.json
-    try:
-        conexion = conectar_a_mysql()
-        if conexion.is_connected():
-            cursor = conexion.cursor()
-            query = "INSERT INTO empleados (nombre) VALUES (%s)"
-            cursor.execute(query, (datos['nombre'],))
-            conexion.commit()
-            cursor.close()
-            conexion.close()
-            return jsonify({"mensaje": "Empleado agregado exitosamente"}), 201
-    except Error as e:
-        print("Error al insertar en MySQL", e)
-        return jsonify({"mensaje": "Error al agregar empleado"}), 500
+@app.route('/ejecutar_consultas', methods=['GET', 'POST', 'PUT', 'DELETE'])
+def ejecutar_consultas():
+    ejecutar_consultas_sql('Query.sql')
+    return "Consultas ejecutadas, revisa la consola para ver los resultados."
 
 if __name__ == '__main__':
     app.run(debug=True)
