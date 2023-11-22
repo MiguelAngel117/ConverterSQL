@@ -77,7 +77,10 @@ extern int yydebug;
     GROUP_BY = 278,                /* GROUP_BY  */
     DIFERENT = 279,                /* DIFERENT  */
     MAYEQUAL = 280,                /* MAYEQUAL  */
-    TO = 281                       /* TO  */
+    TO = 281,                      /* TO  */
+    WITH = 282,                    /* WITH  */
+    MALE = 283,                    /* MALE  */
+    FEMALE = 284                   /* FEMALE  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -92,7 +95,7 @@ union YYSTYPE
     int num;
     float flo;
 
-#line 96 "syntactic.tab.h"
+#line 99 "syntactic.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

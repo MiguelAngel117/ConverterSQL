@@ -10,6 +10,8 @@ float -?[0-9]+\.[0-9]*
 %%
 
 \n                   { return NEWLINE; }
+[Mm]asculino         { return MALE; }
+[Ff]emenino          { return FEMALE; }
 [Ss]eleccionar       { return SELECT; }
 [Aa]                 { return TO; }
 [Ss]elecciona        { return SELECT; }
@@ -18,6 +20,7 @@ float -?[0-9]+\.[0-9]*
 [Ll]os               { return FROM; }
 [Dd]e                { return FROM; }
 [Ee]l                { return THE; }
+[Cc]on               { return WITH; }
 [Ii]nsertar          { return INSERT; }
 [Ee]n                { return INTO; }
 [Aa]ctualizar        { return UPDATE; }
