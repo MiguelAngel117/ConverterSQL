@@ -15,6 +15,8 @@ float -?[0-9]+\.[0-9]*
 [Aa]scendentemente   { return ASC; }
 [Dd]escendentemente  { return DESC; }
 [Dd]escendente       { return DESC; }
+[Dd]istinto          { return DIST; }
+[Dd]iferentes        { return DIST; }
 [Ss]eleccionar       { return SELECT; }
 [Aa]                 { return TO; }
 [Ss]elecciona        { return SELECT; }
@@ -24,6 +26,7 @@ float -?[0-9]+\.[0-9]*
 [Dd]e                { return FROM; }
 [Ee]l                { return THE; }
 [Ll]a                { return THE; }
+[Qq]ue               { return THAT; }
 [Cc]on               { return WITH; }
 [Ii]nsertar          { return INSERT; }
 [Ee]n                { return INTO; }

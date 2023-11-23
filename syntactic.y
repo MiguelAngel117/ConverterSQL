@@ -17,7 +17,7 @@ extern FILE *yyin, *yyout;
 %token <flo> FLOAT
 %token <num> NUMBER
 %token NEWLINE SELECT ALL INSERT INTO UPDATE DELETE WHERE SET VALUE EQUAL FROM THE JOIN ORDER_BY GROUP_BY
-%token DIFERENT MAYEQUAL TO WITH MALE FEMALE ASC DESC AND OR TAB FOR PLACE SHOW
+%token DIFERENT MAYEQUAL TO WITH MALE FEMALE ASC DESC AND OR TAB FOR PLACE SHOW DIST THAT
 
 /** Sección de reglas**/
 %%
@@ -38,6 +38,7 @@ query: select
        | group_by
 
 select: SELECT ALL FROM FIELD { fprintf(yyout, "SELECT * FROM %s;\n", $4); }
+      | SELECT FROM FIELD THAT FIELD DIST FROM FROM FIELD{ fprintf(yyout, "SELECT DISTINCT %s FROM %s;\n", $3, $9); }
       | SELECT ALL FROM FIELD WHERE THE FIELD EQUAL TO FIELD FIELD{ fprintf(yyout, "SELECT * FROM %s WHERE %s = '%s %s';\n", $4, $7, $10, $11); }
       | SELECT THE FIELD FROM FROM FIELD { fprintf(yyout, "SELECT %s FROM %s;\n", $3, $6); }
       | SELECT ALL FROM FIELD WHERE THE FIELD EQUAL TO NUMBER{ fprintf(yyout, "SELECT * FROM %s WHERE %s = %i;\n", $4, $7, $10); }

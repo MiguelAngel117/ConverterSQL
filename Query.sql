@@ -1,4 +1,5 @@
 SELECT * FROM empleados;
+SELECT DISTINCT nombreEmpleado FROM empleados;
 SELECT * FROM empleados WHERE nombreEmpleado = 'Jose Perez';
 SELECT * FROM empleados WHERE idEmpleado = 1;
 SELECT * FROM empleados;

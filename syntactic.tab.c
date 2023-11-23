@@ -143,17 +143,19 @@ enum yysymbol_kind_t
   YYSYMBOL_FOR = 35,                       /* FOR  */
   YYSYMBOL_PLACE = 36,                     /* PLACE  */
   YYSYMBOL_SHOW = 37,                      /* SHOW  */
-  YYSYMBOL_YYACCEPT = 38,                  /* $accept  */
-  YYSYMBOL_input = 39,                     /* input  */
-  YYSYMBOL_line = 40,                      /* line  */
-  YYSYMBOL_query = 41,                     /* query  */
-  YYSYMBOL_select = 42,                    /* select  */
-  YYSYMBOL_insert = 43,                    /* insert  */
-  YYSYMBOL_delete = 44,                    /* delete  */
-  YYSYMBOL_update = 45,                    /* update  */
-  YYSYMBOL_join = 46,                      /* join  */
-  YYSYMBOL_order_by = 47,                  /* order_by  */
-  YYSYMBOL_group_by = 48                   /* group_by  */
+  YYSYMBOL_DIST = 38,                      /* DIST  */
+  YYSYMBOL_THAT = 39,                      /* THAT  */
+  YYSYMBOL_YYACCEPT = 40,                  /* $accept  */
+  YYSYMBOL_input = 41,                     /* input  */
+  YYSYMBOL_line = 42,                      /* line  */
+  YYSYMBOL_query = 43,                     /* query  */
+  YYSYMBOL_select = 44,                    /* select  */
+  YYSYMBOL_insert = 45,                    /* insert  */
+  YYSYMBOL_delete = 46,                    /* delete  */
+  YYSYMBOL_update = 47,                    /* update  */
+  YYSYMBOL_join = 48,                      /* join  */
+  YYSYMBOL_order_by = 49,                  /* order_by  */
+  YYSYMBOL_group_by = 50                   /* group_by  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -479,21 +481,21 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  30
+#define YYFINAL  31
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   121
+#define YYLAST   129
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  38
+#define YYNTOKENS  40
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  11
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  28
+#define YYNRULES  29
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  114
+#define YYNSTATES  122
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   292
+#define YYMAXUTOK   294
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -536,7 +538,7 @@ static const yytype_int8 yytranslate[] =
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
       25,    26,    27,    28,    29,    30,    31,    32,    33,    34,
-      35,    36,    37
+      35,    36,    37,    38,    39
 };
 
 #if YYDEBUG
@@ -545,7 +547,7 @@ static const yytype_int8 yyrline[] =
 {
        0,    25,    25,    26,    28,    29,    30,    32,    33,    34,
       35,    36,    37,    38,    40,    41,    42,    43,    44,    45,
-      47,    49,    50,    51,    53,    55,    57,    58,    60
+      46,    48,    50,    51,    52,    54,    56,    58,    59,    61
 };
 #endif
 
@@ -566,8 +568,8 @@ static const char *const yytname[] =
   "INTO", "UPDATE", "DELETE", "WHERE", "SET", "VALUE", "EQUAL", "FROM",
   "THE", "JOIN", "ORDER_BY", "GROUP_BY", "DIFERENT", "MAYEQUAL", "TO",
   "WITH", "MALE", "FEMALE", "ASC", "DESC", "AND", "OR", "TAB", "FOR",
-  "PLACE", "SHOW", "$accept", "input", "line", "query", "select", "insert",
-  "delete", "update", "join", "order_by", "group_by", YY_NULLPTR
+  "PLACE", "SHOW", "DIST", "THAT", "$accept", "input", "line", "query",
+  "select", "insert", "delete", "update", "join", "order_by", "group_by", YY_NULLPTR
 };
 
 static const char *
@@ -593,16 +595,17 @@ static const yytype_int8 yypact[] =
 {
        6,    -5,    15,    -7,    -9,    -3,    -8,     2,    21,     0,
      -10,    18,   -10,   -10,   -10,   -10,   -10,   -10,   -10,   -10,
-       4,    19,    31,    34,    36,    37,     7,    22,    23,   -10,
-     -10,   -10,   -10,    41,    42,    27,    28,    33,    32,    47,
-      17,    20,    38,    40,    39,    49,    43,    50,    24,    56,
-      57,    58,    44,    59,    62,    63,    51,    48,    35,    45,
-       8,    64,   -10,    68,    46,    52,    53,    70,    71,    72,
-     -10,    61,    54,    73,    -1,    74,    55,    60,    65,    67,
-      79,    80,    81,   -10,    66,    69,    75,   -10,     1,    76,
-      83,   -10,    82,    77,    78,    86,   -10,   -10,    85,   -10,
-      87,    88,   -10,    93,    84,    89,    90,    96,    97,    91,
-     -10,   -10,    95,   -10
+       4,    19,    34,    36,    37,    38,    39,     9,    24,    25,
+     -10,   -10,   -10,   -10,    43,    44,    10,    29,    30,    35,
+      40,    49,    20,    22,    41,    42,    50,    45,    55,    46,
+      56,    31,    58,    59,    62,    47,    32,    65,    66,    68,
+      54,    53,    48,    51,     8,    71,    57,   -10,    72,    52,
+      61,    60,    74,    76,    77,   -10,    63,    69,    64,    79,
+      -1,    81,    67,    70,    73,    75,    82,    86,    87,    89,
+     -10,    78,    80,    83,   -10,     1,   -10,    84,    85,   -10,
+      90,    88,    91,    92,   -10,   -10,    94,   -10,    93,    95,
+     -10,   102,    96,    97,    98,   103,   105,    99,   -10,   -10,
+     104,   -10
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -612,23 +615,24 @@ static const yytype_int8 yydefact[] =
 {
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        2,     4,     7,     8,    10,     9,    11,    12,    13,     6,
-       0,     0,     0,     0,     0,     0,     0,     0,     0,    28,
-       1,     3,     5,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,    14,     0,     0,     0,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,    16,     0,     0,     0,     0,     0,     0,     0,
-      19,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,    23,    21,     0,     0,     0,    18,     0,     0,
-       0,    22,     0,     0,     0,     0,    17,    20,     0,    25,
-       0,     0,    15,     0,     0,     0,     0,     0,     0,     0,
-      26,    27,     0,    24
+      29,     1,     3,     5,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,    14,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,    17,     0,     0,
+       0,     0,     0,     0,     0,    20,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,    24,
+      22,     0,     0,     0,    19,     0,    15,     0,     0,    23,
+       0,     0,     0,     0,    18,    21,     0,    26,     0,     0,
+      16,     0,     0,     0,     0,     0,     0,     0,    27,    28,
+       0,    25
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -10,   -10,    94,   -10,   -10,   -10,   -10,   -10,   -10,   -10,
-      26
+     -10,   -10,   100,   -10,   -10,   -10,   -10,   -10,   -10,   -10,
+      33
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -643,19 +647,19 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      30,     1,    82,    19,    95,    23,    83,     1,    96,     2,
-      24,     3,    26,     4,     5,     2,    25,     3,    20,     4,
-       5,     6,     7,     8,    29,    21,    32,     6,     7,     8,
-      69,     8,    27,    28,    35,    22,    33,    36,    34,    37,
-      38,    39,    40,    41,    42,    43,    44,    47,    45,    46,
-      48,    49,    54,    56,    50,    52,    57,    51,    53,    58,
-      59,    60,    62,    55,    61,    63,    64,    71,    66,    65,
-      67,    72,    73,    76,    77,    78,    81,    84,    74,    79,
-      68,    80,    89,    90,    91,    99,    70,    75,    93,   102,
-     104,   105,    85,    88,    94,    87,   106,    86,    98,   110,
-     111,    92,   113,    31,    97,   103,     0,     0,   109,     0,
-       0,     0,     0,   100,   101,     0,   107,   112,     0,     0,
-       0,   108
+      31,     1,    89,    19,   103,    24,    90,     1,   104,     2,
+      25,     3,    27,     4,     5,     2,    26,     3,    20,     4,
+       5,     6,     7,     8,    30,    21,    33,     6,     7,     8,
+      74,     8,    28,    29,    22,    23,    34,    36,    35,    37,
+      38,    39,    40,    41,    42,    43,    44,    45,    47,    46,
+      48,    49,    51,    56,    52,    50,    53,    55,    58,    60,
+      54,    62,    63,    61,    57,    64,    59,    65,    67,    68,
+      66,    69,    70,    71,    76,    78,    77,    82,    79,    83,
+      84,    85,    88,    72,    91,    96,    73,    80,    86,    97,
+      98,    87,    99,   107,    81,   110,   112,    75,   113,   101,
+     106,    95,   102,    94,    92,   114,   118,    93,   119,    32,
+       0,   121,   105,   100,   111,     0,   117,     0,     0,     0,
+       0,     0,     0,     0,   108,   120,     0,   109,   115,   116
 };
 
 static const yytype_int8 yycheck[] =
@@ -663,50 +667,51 @@ static const yytype_int8 yycheck[] =
        0,     1,     3,     8,     3,    12,     7,     1,     7,     9,
       19,    11,    20,    13,    14,     9,    19,    11,     3,    13,
       14,    21,    22,    23,     3,    10,     8,    21,    22,    23,
-      22,    23,    30,    31,     3,    20,    32,     3,    19,     3,
-       3,    34,    20,    20,     3,     3,    19,    15,    20,    16,
-       3,    34,     3,     3,    34,    15,    32,    19,    19,     3,
-       3,     3,     3,    20,    20,     3,     3,     3,    20,    18,
-      35,     3,    26,     3,     3,     3,     3,     3,    26,    18,
-      35,    27,     3,     3,     3,     3,    60,    34,    19,     3,
-       3,     3,    37,    26,    19,    30,     3,    37,    15,     3,
-       3,    35,     7,     9,    28,    20,    -1,    -1,    18,    -1,
-      -1,    -1,    -1,    36,    36,    -1,    32,    26,    -1,    -1,
-      -1,    32
+      22,    23,    30,    31,    19,    20,    32,     3,    19,     3,
+       3,     3,     3,    34,    20,    20,     3,     3,    19,    39,
+      20,    16,     3,     3,    34,    15,    34,    15,     3,     3,
+      19,     3,     3,    32,    19,     3,    20,    20,     3,     3,
+      38,     3,    18,    20,     3,     3,    19,     3,    26,     3,
+       3,    18,     3,    35,     3,     3,    35,    26,    19,     3,
+       3,    27,     3,     3,    34,     3,     3,    64,     3,    19,
+      15,    26,    19,    30,    37,     3,     3,    37,     3,     9,
+      -1,     7,    28,    35,    20,    -1,    18,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    36,    26,    -1,    36,    32,    32
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     1,     9,    11,    13,    14,    21,    22,    23,    39,
-      40,    41,    42,    43,    44,    45,    46,    47,    48,     8,
-       3,    10,    20,    12,    19,    19,    20,    30,    31,     3,
-       0,    40,     8,    32,    19,     3,     3,     3,     3,    34,
-      20,    20,     3,     3,    19,    20,    16,    15,     3,    34,
-      34,    19,    15,    19,     3,    20,     3,    32,     3,     3,
-       3,    20,     3,     3,     3,    18,    20,    35,    35,    22,
-      48,     3,     3,    26,    26,    34,     3,     3,     3,    18,
-      27,     3,     3,     7,     3,    37,    37,    30,    26,     3,
-       3,     3,    35,    19,    19,     3,     7,    28,    15,     3,
-      36,    36,     3,    20,     3,     3,     3,    32,    32,    18,
-       3,     3,    26,     7
+       0,     1,     9,    11,    13,    14,    21,    22,    23,    41,
+      42,    43,    44,    45,    46,    47,    48,    49,    50,     8,
+       3,    10,    19,    20,    12,    19,    19,    20,    30,    31,
+       3,     0,    42,     8,    32,    19,     3,     3,     3,     3,
+       3,    34,    20,    20,     3,     3,    39,    19,    20,    16,
+      15,     3,    34,    34,    19,    15,     3,    19,     3,    20,
+       3,    32,     3,     3,     3,    20,    38,     3,     3,     3,
+      18,    20,    35,    35,    22,    50,     3,    19,     3,    26,
+      26,    34,     3,     3,     3,    18,    19,    27,     3,     3,
+       7,     3,    37,    37,    30,    26,     3,     3,     3,     3,
+      35,    19,    19,     3,     7,    28,    15,     3,    36,    36,
+       3,    20,     3,     3,     3,    32,    32,    18,     3,     3,
+      26,     7
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    38,    39,    39,    40,    40,    40,    41,    41,    41,
-      41,    41,    41,    41,    42,    42,    42,    42,    42,    42,
-      43,    44,    44,    44,    45,    46,    47,    47,    48
+       0,    40,    41,    41,    42,    42,    42,    43,    43,    43,
+      43,    43,    43,    43,    44,    44,    44,    44,    44,    44,
+      44,    45,    46,    46,    46,    47,    48,    49,    49,    50
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
        0,     2,     1,     2,     1,     2,     2,     1,     1,     1,
-       1,     1,     1,     1,     4,    11,     6,    10,     9,     7,
-      10,     8,     9,     8,    15,    10,    13,    13,     2
+       1,     1,     1,     1,     4,     9,    11,     6,    10,     9,
+       7,    10,     8,     9,     8,    15,    10,    13,    13,     2
 };
 
 
@@ -1172,95 +1177,101 @@ yyreduce:
   case 6: /* line: error NEWLINE  */
 #line 30 "syntactic.y"
                         { yyerror("Error en la entrada"); yyclearin; }
-#line 1176 "syntactic.tab.c"
+#line 1181 "syntactic.tab.c"
     break;
 
   case 14: /* select: SELECT ALL FROM FIELD  */
 #line 40 "syntactic.y"
                               { fprintf(yyout, "SELECT * FROM %s;\n", (yyvsp[0].str)); }
-#line 1182 "syntactic.tab.c"
+#line 1187 "syntactic.tab.c"
     break;
 
-  case 15: /* select: SELECT ALL FROM FIELD WHERE THE FIELD EQUAL TO FIELD FIELD  */
+  case 15: /* select: SELECT FROM FIELD THAT FIELD DIST FROM FROM FIELD  */
 #line 41 "syntactic.y"
-                                                                  { fprintf(yyout, "SELECT * FROM %s WHERE %s = '%s %s';\n", (yyvsp[-7].str), (yyvsp[-4].str), (yyvsp[-1].str), (yyvsp[0].str)); }
-#line 1188 "syntactic.tab.c"
+                                                         { fprintf(yyout, "SELECT DISTINCT %s FROM %s;\n", (yyvsp[-6].str), (yyvsp[0].str)); }
+#line 1193 "syntactic.tab.c"
     break;
 
-  case 16: /* select: SELECT THE FIELD FROM FROM FIELD  */
+  case 16: /* select: SELECT ALL FROM FIELD WHERE THE FIELD EQUAL TO FIELD FIELD  */
 #line 42 "syntactic.y"
-                                         { fprintf(yyout, "SELECT %s FROM %s;\n", (yyvsp[-3].str), (yyvsp[0].str)); }
-#line 1194 "syntactic.tab.c"
+                                                                  { fprintf(yyout, "SELECT * FROM %s WHERE %s = '%s %s';\n", (yyvsp[-7].str), (yyvsp[-4].str), (yyvsp[-1].str), (yyvsp[0].str)); }
+#line 1199 "syntactic.tab.c"
     break;
 
-  case 17: /* select: SELECT ALL FROM FIELD WHERE THE FIELD EQUAL TO NUMBER  */
+  case 17: /* select: SELECT THE FIELD FROM FROM FIELD  */
 #line 43 "syntactic.y"
-                                                             { fprintf(yyout, "SELECT * FROM %s WHERE %s = %i;\n", (yyvsp[-6].str), (yyvsp[-3].str), (yyvsp[0].num)); }
-#line 1200 "syntactic.tab.c"
+                                         { fprintf(yyout, "SELECT %s FROM %s;\n", (yyvsp[-3].str), (yyvsp[0].str)); }
+#line 1205 "syntactic.tab.c"
     break;
 
-  case 18: /* select: SELECT FIELD AND FIELD FROM FIELD ORDER_BY FIELD ASC  */
+  case 18: /* select: SELECT ALL FROM FIELD WHERE THE FIELD EQUAL TO NUMBER  */
 #line 44 "syntactic.y"
+                                                             { fprintf(yyout, "SELECT * FROM %s WHERE %s = %i;\n", (yyvsp[-6].str), (yyvsp[-3].str), (yyvsp[0].num)); }
+#line 1211 "syntactic.tab.c"
+    break;
+
+  case 19: /* select: SELECT FIELD AND FIELD FROM FIELD ORDER_BY FIELD ASC  */
+#line 45 "syntactic.y"
                                                              { fprintf(yyout, "SELECT %s, %s FROM %s ORDER BY %s ASC;\n", (yyvsp[-7].str), (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[-1].str));}
-#line 1206 "syntactic.tab.c"
+#line 1217 "syntactic.tab.c"
     break;
 
-  case 20: /* insert: INSERT INTO FIELD THE FIELD FIELD FIELD WITH FIELD MALE  */
-#line 47 "syntactic.y"
+  case 21: /* insert: INSERT INTO FIELD THE FIELD FIELD FIELD WITH FIELD MALE  */
+#line 48 "syntactic.y"
                                                                { fprintf(yyout, "INSERT INTO %s (%s, %s) VALUES ('%s %s', 'M');\n", (yyvsp[-7].str), (yyvsp[-5].str), (yyvsp[-1].str), (yyvsp[-4].str), (yyvsp[-3].str));}
-#line 1212 "syntactic.tab.c"
+#line 1223 "syntactic.tab.c"
     break;
 
-  case 21: /* delete: DELETE FROM FIELD WHERE FIELD EQUAL TO NUMBER  */
-#line 49 "syntactic.y"
-                                                     { fprintf(yyout, "DELETE FROM %s WHERE %s = %i;\n", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[0].num)); }
-#line 1218 "syntactic.tab.c"
-    break;
-
-  case 22: /* delete: DELETE FROM FIELD WHERE FIELD EQUAL TO FIELD FIELD  */
+  case 22: /* delete: DELETE FROM FIELD WHERE FIELD EQUAL TO NUMBER  */
 #line 50 "syntactic.y"
-                                                           { fprintf(yyout, "DELETE FROM %s WHERE %s = '%s %s';\n", (yyvsp[-6].str), (yyvsp[-4].str), (yyvsp[-1].str), (yyvsp[0].str)); }
-#line 1224 "syntactic.tab.c"
+                                                     { fprintf(yyout, "DELETE FROM %s WHERE %s = %i;\n", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[0].num)); }
+#line 1229 "syntactic.tab.c"
     break;
 
-  case 23: /* delete: DELETE FROM FIELD WHERE FIELD EQUAL TO FIELD  */
+  case 23: /* delete: DELETE FROM FIELD WHERE FIELD EQUAL TO FIELD FIELD  */
 #line 51 "syntactic.y"
+                                                           { fprintf(yyout, "DELETE FROM %s WHERE %s = '%s %s';\n", (yyvsp[-6].str), (yyvsp[-4].str), (yyvsp[-1].str), (yyvsp[0].str)); }
+#line 1235 "syntactic.tab.c"
+    break;
+
+  case 24: /* delete: DELETE FROM FIELD WHERE FIELD EQUAL TO FIELD  */
+#line 52 "syntactic.y"
                                                      { fprintf(yyout, "DELETE FROM %s WHERE %s = '%s';\n", (yyvsp[-5].str), (yyvsp[-3].str), (yyvsp[0].str)); }
-#line 1230 "syntactic.tab.c"
+#line 1241 "syntactic.tab.c"
     break;
 
-  case 24: /* update: UPDATE FROM FIELD SET THE FIELD TO FIELD FIELD WHERE THE FIELD EQUAL TO NUMBER  */
-#line 53 "syntactic.y"
+  case 25: /* update: UPDATE FROM FIELD SET THE FIELD TO FIELD FIELD WHERE THE FIELD EQUAL TO NUMBER  */
+#line 54 "syntactic.y"
                                                                                       { fprintf(yyout, "UPDATE %s SET %s = '%s %s' WHERE %s = %i;\n", (yyvsp[-12].str), (yyvsp[-9].str), (yyvsp[-7].str), (yyvsp[-6].str), (yyvsp[-3].str), (yyvsp[0].num)); }
-#line 1236 "syntactic.tab.c"
+#line 1247 "syntactic.tab.c"
     break;
 
-  case 25: /* join: JOIN THE TAB FIELD AND THE TAB FIELD FOR FIELD  */
-#line 55 "syntactic.y"
+  case 26: /* join: JOIN THE TAB FIELD AND THE TAB FIELD FOR FIELD  */
+#line 56 "syntactic.y"
                                                      { fprintf(yyout, "SELECT * FROM %s INNER JOIN %s WHERE %s.%s = %s.%s;", (yyvsp[-6].str), (yyvsp[-2].str), (yyvsp[-6].str), (yyvsp[0].str), (yyvsp[-2].str), (yyvsp[0].str)); }
-#line 1242 "syntactic.tab.c"
+#line 1253 "syntactic.tab.c"
     break;
 
-  case 26: /* order_by: ORDER_BY ASC THE TAB FIELD FOR FIELD SHOW FROM PLACE FIELD AND FIELD  */
-#line 57 "syntactic.y"
-                                                                                { fprintf(yyout, "SELECT %s, %s FROM %s ORDER BY %s ASC;\n", (yyvsp[-2].str), (yyvsp[0].str), (yyvsp[-8].str), (yyvsp[-6].str));}
-#line 1248 "syntactic.tab.c"
-    break;
-
-  case 27: /* order_by: ORDER_BY DESC THE TAB FIELD FOR FIELD SHOW FROM PLACE FIELD AND FIELD  */
+  case 27: /* order_by: ORDER_BY ASC THE TAB FIELD FOR FIELD SHOW FROM PLACE FIELD AND FIELD  */
 #line 58 "syntactic.y"
+                                                                                { fprintf(yyout, "SELECT %s, %s FROM %s ORDER BY %s ASC;\n", (yyvsp[-2].str), (yyvsp[0].str), (yyvsp[-8].str), (yyvsp[-6].str));}
+#line 1259 "syntactic.tab.c"
+    break;
+
+  case 28: /* order_by: ORDER_BY DESC THE TAB FIELD FOR FIELD SHOW FROM PLACE FIELD AND FIELD  */
+#line 59 "syntactic.y"
                                                                                  { fprintf(yyout, "SELECT %s, %s FROM %s ORDER BY %s DESC;\n", (yyvsp[-2].str), (yyvsp[0].str), (yyvsp[-8].str), (yyvsp[-6].str));}
-#line 1254 "syntactic.tab.c"
+#line 1265 "syntactic.tab.c"
     break;
 
-  case 28: /* group_by: GROUP_BY FIELD  */
-#line 60 "syntactic.y"
+  case 29: /* group_by: GROUP_BY FIELD  */
+#line 61 "syntactic.y"
                          { fprintf(yyout, "GROUP BY %s", (yyvsp[0].str)); }
-#line 1260 "syntactic.tab.c"
+#line 1271 "syntactic.tab.c"
     break;
 
 
-#line 1264 "syntactic.tab.c"
+#line 1275 "syntactic.tab.c"
 
       default: break;
     }
@@ -1453,7 +1464,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 62 "syntactic.y"
+#line 63 "syntactic.y"
 
 
 void yyerror(char *s) {
