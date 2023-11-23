@@ -38,6 +38,11 @@ float -?[0-9]+\.[0-9]*
 [Vv]alor             { return VALUE; }
 [Ss]ea[ \t]igual     { return EQUAL; }
 [Ii]gual             { return EQUAL; }
+[Ss]ea[ \t]mayor     { return MAY; }
+[Mm]ayor             { return MAY; }
+[Ss]ea[ \t]menor     { return MEN; }
+[Mm]enor             { return MEN; }
+[Ss]ea[ \t]diferente { return DIFERENT; }
 [Dd]iferente         { return DIFERENT; }
 "y"                  { return AND; }
 [Oo]                 { return OR; }

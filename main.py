@@ -20,6 +20,7 @@ def conectar_a_mysql():
         return None
 
 def ejecutar_consultas_sql(archivo):
+    resultados_str = ""
     try:
         with open(archivo, 'r') as file:
             consultas = [line.strip() for line in file if line.strip()]
@@ -33,19 +34,20 @@ def ejecutar_consultas_sql(archivo):
                 if palabra_clave == 'select':
                     resultados = cursor.fetchall()
                     for resultado in resultados:
-                        print(resultado)
+                        resultados_str += str(resultado) + "<br>"
                 else:
                     conexion.commit()
-                    print(f"Operación {palabra_clave} ejecutada con éxito.")
+                    resultados_str += f"Operación {palabra_clave} ejecutada con éxito.<br>"
+                resultados_str += "<hr>"
             cursor.close()
             conexion.close()
     except Error as e:
-        print("Error al ejecutar consultas en MySQL", e)
+        resultados_str += "Error al ejecutar consultas en MySQL: " + str(e)
+    return resultados_str
 
 @app.route('/ejecutar_consultas', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def ejecutar_consultas():
-    ejecutar_consultas_sql('Query.sql')
-    return "Consultas ejecutadas, revisa la consola para ver los resultados."
+    return ejecutar_consultas_sql('Query.sql')
 
 if __name__ == '__main__':
     app.run(debug=True)

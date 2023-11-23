@@ -1,6 +1,7 @@
 Selecciona todos los empleados
 seleccionar los nombreEmpleado que sean diferentes de los empleados
 Seleccionar todos los empleados donde el nombreEmpleado sea igual a Jose Perez
+Seleccionar todos los empleados donde el idEmpleado sea mayor o igual a 3
 Seleccionar todos los empleados donde el idEmpleado sea igual a 1
 seleccione todos los empleados
 Seleccione el nombreEmpleado de los empleados

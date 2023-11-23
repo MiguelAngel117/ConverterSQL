@@ -90,7 +90,9 @@ extern int yydebug;
     PLACE = 291,                   /* PLACE  */
     SHOW = 292,                    /* SHOW  */
     DIST = 293,                    /* DIST  */
-    THAT = 294                     /* THAT  */
+    THAT = 294,                    /* THAT  */
+    MAY = 295,                     /* MAY  */
+    MEN = 296                      /* MEN  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -105,7 +107,7 @@ union YYSTYPE
     int num;
     float flo;
 
-#line 109 "syntactic.tab.h"
+#line 111 "syntactic.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
