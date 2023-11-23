@@ -17,7 +17,7 @@ extern FILE *yyin, *yyout;
 %token <flo> FLOAT
 %token <num> NUMBER
 %token NEWLINE SELECT ALL INSERT INTO UPDATE DELETE WHERE SET VALUE EQUAL FROM THE JOIN ORDER_BY GROUP_BY
-%token DIFERENT MAYEQUAL TO WITH MALE FEMALE
+%token DIFERENT MAYEQUAL TO WITH MALE FEMALE ASC DESC AND OR TAB FOR PLACE SHOW
 
 /** Sección de reglas**/
 %%
@@ -41,20 +41,21 @@ select: SELECT ALL FROM FIELD { fprintf(yyout, "SELECT * FROM %s;\n", $4); }
       | SELECT ALL FROM FIELD WHERE THE FIELD EQUAL TO FIELD FIELD{ fprintf(yyout, "SELECT * FROM %s WHERE %s = '%s %s';\n", $4, $7, $10, $11); }
       | SELECT THE FIELD FROM FROM FIELD { fprintf(yyout, "SELECT %s FROM %s;\n", $3, $6); }
       | SELECT ALL FROM FIELD WHERE THE FIELD EQUAL TO NUMBER{ fprintf(yyout, "SELECT * FROM %s WHERE %s = %i;\n", $4, $7, $10); }
-      | SELECT ALL FROM TABLE join order_by group_by
-      | SELECT FIELD FROM TABLE WHERE
+      | SELECT FIELD AND FIELD FROM FIELD ORDER_BY FIELD ASC { fprintf(yyout, "SELECT %s, %s FROM %s ORDER BY %s ASC;\n", $2, $4, $6, $8);}
+      | SELECT FIELD AND FIELD FROM FIELD group_by
 
 insert: INSERT INTO FIELD THE FIELD FIELD FIELD WITH FIELD MALE{ fprintf(yyout, "INSERT INTO %s (%s, %s) VALUES ('%s %s', 'M');\n", $3, $5, $9, $6, $7);}
 
 delete: DELETE FROM FIELD WHERE FIELD EQUAL TO NUMBER{ fprintf(yyout, "DELETE FROM %s WHERE %s = %i;\n", $3, $5, $8); }
-      | DELETE FROM FIELD WHERE FIELD EQUAL TO FIELD FIELD{ fprintf(yyout, "DELETE FROM %s WHERE %s = '%s %s';\n", $3, $5, $8, $9); }
-      | DELETE FROM FIELD WHERE FIELD EQUAL TO FIELD{ fprintf(yyout, "DELETE FROM %s WHERE %s = '%s';\n", $3, $5, $8); }
+      | DELETE FROM FIELD WHERE FIELD EQUAL TO FIELD FIELD { fprintf(yyout, "DELETE FROM %s WHERE %s = '%s %s';\n", $3, $5, $8, $9); }
+      | DELETE FROM FIELD WHERE FIELD EQUAL TO FIELD { fprintf(yyout, "DELETE FROM %s WHERE %s = '%s';\n", $3, $5, $8); }
 
-update: UPDATE FIELD SET { fprintf(yyout, "UPDATE %s SET nombre = 'Juan';\n", $2); }
+update: UPDATE FROM FIELD SET THE FIELD TO FIELD FIELD WHERE THE FIELD EQUAL TO NUMBER{ fprintf(yyout, "UPDATE %s SET %s = '%s %s' WHERE %s = %i;\n", $3, $6, $8, $9, $12, $15); }
 
-join: JOIN TABLE { fprintf(yyout, " JOIN %s", $2); }
+join: JOIN THE TAB FIELD AND THE TAB FIELD FOR FIELD { fprintf(yyout, "SELECT * FROM %s INNER JOIN %s WHERE %s.%s = %s.%s;", $4, $8, $4, $10, $8, $10); }
 
-order_by: ORDER_BY FIELD { fprintf(yyout, "ORDER BY %s", $2); }
+order_by : ORDER_BY ASC THE TAB FIELD FOR FIELD SHOW FROM PLACE FIELD AND FIELD { fprintf(yyout, "SELECT %s, %s FROM %s ORDER BY %s ASC;\n", $11, $13, $5, $7);}
+         | ORDER_BY DESC THE TAB FIELD FOR FIELD SHOW FROM PLACE FIELD AND FIELD { fprintf(yyout, "SELECT %s, %s FROM %s ORDER BY %s DESC;\n", $11, $13, $5, $7);}
 
 group_by: GROUP_BY FIELD { fprintf(yyout, "GROUP BY %s", $2); }
 

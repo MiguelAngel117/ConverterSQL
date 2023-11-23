@@ -6,5 +6,7 @@ Seleccione el nombreEmpleado de los empleados
 Eliminar de empleados donde idEmpleado sea igual a 5
 Eliminar de empleados donde nombreEmpleado sea igual a Jose Perez
 Insertar en empleados el nombreEmpleado Diego Carabuena con sexo masculino
-Actualizar empleados establecer
-ordenar por empleados
+Actualizar los empleados cambiar el nombreEmpleado a Benito Jose donde el idEmpleado sea igual a 3
+Seleccionar nombreEmpleado y sexo de empleados ordena por nombreEmpleado ascendentemente
+Ordena descendentemente la tabla empleados por nombreEmpleado muestra los campos nombreEmpleado y sexo
+unir la tabla empleados y la tabla empleadoDepartamento por idEmpleado

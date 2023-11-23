@@ -80,7 +80,15 @@ extern int yydebug;
     TO = 281,                      /* TO  */
     WITH = 282,                    /* WITH  */
     MALE = 283,                    /* MALE  */
-    FEMALE = 284                   /* FEMALE  */
+    FEMALE = 284,                  /* FEMALE  */
+    ASC = 285,                     /* ASC  */
+    DESC = 286,                    /* DESC  */
+    AND = 287,                     /* AND  */
+    OR = 288,                      /* OR  */
+    TAB = 289,                     /* TAB  */
+    FOR = 290,                     /* FOR  */
+    PLACE = 291,                   /* PLACE  */
+    SHOW = 292                     /* SHOW  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -95,7 +103,7 @@ union YYSTYPE
     int num;
     float flo;
 
-#line 99 "syntactic.tab.h"
+#line 107 "syntactic.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

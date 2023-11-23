@@ -6,5 +6,7 @@ SELECT nombreEmpleado FROM empleados;
 DELETE FROM empleados WHERE idEmpleado = 5;
 DELETE FROM empleados WHERE nombreEmpleado = 'Jose Perez';
 INSERT INTO empleados (nombreEmpleado, sexo) VALUES ('Diego Carabuena', 'M');
-UPDATE empleados SET nombre = 'Juan';
-ORDER BY empleados
+UPDATE empleados SET nombreEmpleado = 'Benito Jose' WHERE idEmpleado = 3;
+SELECT nombreEmpleado, sexo FROM empleados ORDER BY nombreEmpleado ASC;
+SELECT nombreEmpleado, sexo FROM empleados ORDER BY nombreEmpleado DESC;
+SELECT * FROM empleados INNER JOIN empleadoDepartamento WHERE empleados.idEmpleado = empleadoDepartamento.idEmpleado;
