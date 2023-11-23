@@ -4,7 +4,7 @@ SELECT * FROM empleados WHERE nombreEmpleado = 'Jose Perez';
 SELECT * FROM empleados WHERE idEmpleado >= 3;
 SELECT * FROM empleados WHERE idEmpleado = 1;
 SELECT * FROM empleados;
-SELECT nombreEmpleado FROM empleados;
+SELECT nombreDepartamento FROM departamentos;
 DELETE FROM empleados WHERE idEmpleado = 5;
 DELETE FROM empleados WHERE nombreEmpleado = 'Jose Perez';
 INSERT INTO empleados (nombreEmpleado, sexo) VALUES ('Diego Carabuena', 'M');
